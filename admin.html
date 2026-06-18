@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Verfasser-Bereich — Ich lerne Deutsch</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='%23E2A33B' stroke-width='6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-shell">
+  <h1>Verfasser-Bereich</h1>
+  <p class="admin-sub">নতুন আর্টিকেল লিখে সরাসরি সাইটে পোস্ট করো।</p>
+
+  <details class="settings">
+    <summary>⚙ GitHub-Einstellungen / সেটিংস (একবার করলেই হবে)</summary>
+    <div class="field">
+      <label for="gh-owner">GitHub Benutzername</label>
+      <input type="text" id="gh-owner" placeholder="যেমন: sahedmridha">
+    </div>
+    <div class="field">
+      <label for="gh-repo">Repository-Name</label>
+      <input type="text" id="gh-repo" placeholder="যেমন: ich-lerne-deutsch">
+    </div>
+    <div class="field">
+      <label for="gh-branch">Branch</label>
+      <input type="text" id="gh-branch" placeholder="main" value="main">
+    </div>
+    <div class="field">
+      <label for="gh-token">Persönliches Zugriffstoken (Personal Access Token)</label>
+      <input type="password" id="gh-token" placeholder="github_pat_...">
+      <span class="caption">এই টোকেন শুধু তোমার ব্রাউজারে (localStorage) সেভ থাকে, কোথাও আপলোড হয় না। GitHub-এ গিয়ে Settings → Developer settings → Fine-grained tokens → শুধু এই repo-র জন্য Contents: Read and write পারমিশন দিয়ে বানাও।</span>
+    </div>
+    <button class="btn ghost" id="save-settings">সেটিংস সেভ করো</button>
+  </details>
+
+  <form id="article-form">
+    <div class="row-split">
+      <div class="field">
+        <label for="title">Titel</label>
+        <input type="text" id="title" placeholder="z. B. Der Amazonas" required>
+      </div>
+      <div class="field">
+        <label for="date">Datum</label>
+        <input type="date" id="date">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="category">Kategorie (ঐচ্ছিক)</label>
+      <input type="text" id="category" placeholder="z. B. Natur, Geschichte, Tiere">
+    </div>
+
+    <div class="field">
+      <label for="content">Inhalt</label>
+      <textarea id="content" placeholder="তোমার জার্মান আর্টিকেল এখানে লেখো..." required></textarea>
+      <span class="caption">প্রতি প্যারাগ্রাফের পর একটা ফাঁকা লাইন (Enter দুইবার) রাখো।</span>
+    </div>
+
+    <div class="field">
+      <label for="highlight">Hervorzuhebende Wörter</label>
+      <input type="text" id="highlight" placeholder="Wahrzeichen, Eisenkonstruktion, Aussichtsplattform">
+      <span class="caption">যেসব শব্দ বোল্ড + রঙিন (amber) দেখাতে চাও, কমা দিয়ে আলাদা করে লেখো। লেখার মধ্যে এই শব্দগুলো যেখানেই থাকবে, সেখানেই হাইলাইট হয়ে যাবে।</span>
+    </div>
+
+    <div class="btn-row">
+      <button type="button" class="btn ghost" id="preview-btn">Vorschau / প্রিভিউ</button>
+      <button type="button" class="btn ghost" id="download-btn">শুধু JSON ডাউনলোড করো</button>
+      <button type="submit" class="btn primary" id="publish-btn">Veröffentlichen</button>
+    </div>
+
+    <div class="status" id="status"></div>
+  </form>
+
+  <div class="preview-box hidden" id="preview-box">
+    <h3 id="preview-title"></h3>
+    <div class="body" id="preview-body"></div>
+  </div>
+
+  <p style="margin-top:3rem"><a href="index.html">← সাইটে ফিরে যাও</a></p>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

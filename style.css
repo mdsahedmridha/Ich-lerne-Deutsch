@@ -1,0 +1,366 @@
+/* =========================================================
+   Ich lerne Deutsch — design tokens
+   Palette: Tinte (ink), Pergament (parchment), Bernstein (amber),
+            Moos (moss), Rost (rust), Nebel (mist)
+   Type:    Fraunces (display) / IBM Plex Sans (body) / IBM Plex Mono (utility)
+   ========================================================= */
+
+:root{
+  --ink:        #0E2227;
+  --ink-soft:   #15323A;
+  --ink-line:   #25454E;
+  --parchment:  #EFE6D2;
+  --parchment-dim: #C9C0AC;
+  --amber:      #E2A33B;
+  --amber-soft: #E2A33B33;
+  --moss:       #8AA985;
+  --rust:       #C2613A;
+  --mist:       #93A6A3;
+
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:  "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+  --maxw: 720px;
+  --radius: 2px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--amber); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+:focus-visible{
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.hidden{ display:none !important; }
+
+/* ---------- header ---------- */
+.site-header{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3.2rem 1.5rem 1.5rem;
+  border-bottom: 1px solid var(--ink-line);
+}
+.wordmark{
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.wordmark em{
+  font-style: italic;
+  font-weight: 400;
+  color: var(--amber);
+}
+.kicker{
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin: 0.6rem 0 0;
+}
+
+/* ---------- layout ---------- */
+main{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.section-label{
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin: 0 0 1rem;
+}
+
+/* ---------- stamp (signature element) ---------- */
+.stamp{
+  width: 78px;
+  height: 78px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 2px solid var(--amber);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-6deg);
+  font-family: var(--mono);
+  color: var(--amber);
+  position: relative;
+}
+.stamp::before{
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed var(--amber);
+  border-radius: 50%;
+  opacity: 0.55;
+}
+.stamp .stamp-day{
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.stamp .stamp-month{
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---------- featured plate ---------- */
+.plate{
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--ink-line);
+  margin-bottom: 2.5rem;
+  cursor: pointer;
+}
+.plate h2{
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+.plate .tag{
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 0.5rem;
+}
+.plate p{
+  margin: 0 0 0.9rem;
+  color: var(--parchment-dim);
+  max-width: 58ch;
+}
+.plate .read-more{
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+/* ---------- ledger list ---------- */
+.ledger{ list-style: none; margin: 0; padding: 0; }
+.ledger li{
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--ink-line);
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.ledger li:hover{ transform: translateX(4px); }
+.ledger .ledger-date{
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--mist);
+  flex: 0 0 auto;
+  width: 4.5rem;
+}
+.ledger .ledger-title{
+  font-family: var(--sans);
+  font-weight: 500;
+  flex: 1 1 auto;
+}
+.ledger li:hover .ledger-title{ color: var(--amber); }
+.ledger .ledger-arrow{ color: var(--amber); font-family: var(--mono); }
+
+/* ---------- detail view ---------- */
+.detail{
+  max-width: var(--maxw);
+}
+.detail .stamp{ margin-bottom: 1.5rem; }
+.detail h1{
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+.detail .meta{
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--mist);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.8rem;
+}
+.detail .body p{
+  margin: 0 0 1.2rem;
+  font-size: 1.05rem;
+}
+.detail .back-link{
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+mark.hl{
+  background: none;
+  color: var(--amber);
+  font-weight: 600;
+}
+
+/* ---------- empty / error state ---------- */
+.empty-state{
+  padding: 3rem 0;
+  color: var(--parchment-dim);
+}
+.empty-state strong{ color: var(--amber); }
+
+/* ---------- footer ---------- */
+.site-footer{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--mist);
+  border-top: 1px solid var(--ink-line);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 560px){
+  .plate{ flex-direction: column; gap: 1rem; }
+  .ledger li{ flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+/* =========================================================
+   Admin (Verfasser-Bereich) — utility/desk styling
+   ========================================================= */
+.admin-shell{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+.admin-shell h1{
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  margin: 0 0 0.3rem;
+}
+.admin-sub{
+  color: var(--mist);
+  font-size: 0.9rem;
+  margin: 0 0 2rem;
+}
+.field{ margin-bottom: 1.4rem; }
+.field label{
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--amber);
+  margin-bottom: 0.4rem;
+}
+.field .caption{
+  display: block;
+  font-size: 0.82rem;
+  color: var(--mist);
+  margin-top: 0.35rem;
+}
+.field input[type="text"],
+.field input[type="date"],
+.field input[type="password"],
+.field textarea{
+  width: 100%;
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius);
+  color: var(--parchment);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  padding: 0.7rem 0.8rem;
+}
+.field textarea{ resize: vertical; min-height: 160px; line-height: 1.6; }
+.field input::placeholder, .field textarea::placeholder{ color: var(--parchment-dim); opacity: 0.6; }
+.row-split{ display: flex; gap: 1rem; flex-wrap: wrap; }
+.row-split .field{ flex: 1 1 200px; }
+
+.btn{
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius);
+  border: 1px solid var(--amber);
+  background: transparent;
+  color: var(--amber);
+  padding: 0.7rem 1.3rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn:hover{ background: var(--amber); color: var(--ink); }
+.btn.primary{ background: var(--amber); color: var(--ink); }
+.btn.primary:hover{ background: #f0b557; }
+.btn.ghost{ border-color: var(--ink-line); color: var(--mist); }
+.btn.ghost:hover{ background: var(--ink-soft); color: var(--parchment); }
+.btn-row{ display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+
+details.settings{
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.6rem;
+  background: var(--ink-soft);
+}
+details.settings summary{
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--mist);
+  cursor: pointer;
+}
+details.settings .field{ margin-top: 1rem; }
+
+.status{
+  margin-top: 1.4rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  border: 1px solid var(--ink-line);
+  display: none;
+}
+.status.show{ display: block; }
+.status.ok{ border-color: var(--moss); color: var(--moss); }
+.status.err{ border-color: var(--rust); color: var(--rust); }
+.status.info{ border-color: var(--mist); color: var(--mist); }
+
+.preview-box{
+  margin-top: 1.4rem;
+  padding: 1.4rem 1.5rem;
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius);
+}
+.preview-box h3{
+  font-family: var(--serif);
+  margin: 0 0 0.8rem;
+}
+.preview-box .body p{ margin: 0 0 1rem; }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ich lerne Deutsch — Ein deutsches Lernjournal</title>
+<meta name="description" content="Ein persönliches Lernjournal mit deutschen Artikeln über die Welt.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='%23E2A33B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23E2A33B' stroke-width='3' stroke-dasharray='4 4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1 class="wordmark">Ich lerne <em>Deutsch</em></h1>
+  <p class="kicker">Ein deutsches Lernjournal · Artikel über die Welt</p>
+</header>
+
+<main id="app">
+  <section id="view-list">
+    <div id="featured"></div>
+    <div id="ledger-wrap">
+      <h2 class="section-label">Weitere Einträge</h2>
+      <ul class="ledger" id="ledger"></ul>
+    </div>
+  </section>
+
+  <article id="view-detail" class="detail hidden"></article>
+</main>
+
+<footer class="site-footer">
+  <span>Verfasser: Md Sahed Mridha</span>
+  <a href="admin.html">Verfasser-Zugang</a>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
