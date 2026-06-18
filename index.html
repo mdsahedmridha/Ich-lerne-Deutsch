@@ -7,14 +7,29 @@
 <meta name="description" content="Ein persönliches Lernjournal mit deutschen Artikeln über die Welt.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='%23E2A33B' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='28' fill='none' stroke='%23E2A33B' stroke-width='3' stroke-dasharray='4 4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem("ild_theme") || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 
 <header class="site-header">
-  <h1 class="wordmark">Ich lerne <em>Deutsch</em></h1>
-  <p class="kicker">Ein deutsches Lernjournal · Artikel über die Welt</p>
+  <div class="header-row">
+    <div>
+      <h1 class="wordmark">Ich lerne <em>Deutsch</em></h1>
+      <p class="kicker">Ein deutsches Lernjournal · Artikel über die Welt</p>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Theme wechseln" title="Dark/Light wechseln">
+      <span class="theme-icon">🌙</span>
+    </button>
+  </div>
 </header>
 
 <main id="app">
